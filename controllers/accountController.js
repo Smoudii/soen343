@@ -81,6 +81,8 @@ module.exports = {
      */
     getUser: function(req, res, next) {
         res.locals.isAuthenticated = req.isAuthenticated();
+        if(!req.isAuthenticated())
+        {req.flash('error_msg', 'You must register in order to view your cart.')}
         if (req.isAuthenticated()) {
             UserMapper.find(req.user.email, function(err, user) {
                 if (err) throw err;

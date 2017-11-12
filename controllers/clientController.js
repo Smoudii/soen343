@@ -14,6 +14,7 @@ module.exports = {
     },
 
     viewShoppingCart: function(req, res) {
+        req.flash('error_msg',"TEST!");
         let data = req.clientUser.shoppingcart.cart;
         let total = req.clientUser.shoppingcart.getTotal();
         res.render('client/shoppingCart', {
